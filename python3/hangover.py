@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import random
 
 from twilio import TwilioRestException
 from twilio.rest import TwilioRestClient
 
 from hackerutils import get_dotenv, get_log_path, sh
+import secrets
 
 dotenv = get_dotenv()
 
@@ -39,7 +39,7 @@ def main():
         client.messages.create(
             to=number_of_boss,
             from_=my_number,
-            body='Gonna work from home. ' + random.choice(excuses),
+            body='Gonna work from home. ' + secrets.choice(excuses),
         )
     except TwilioRestException as e:
         # Log errors.
